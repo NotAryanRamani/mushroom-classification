@@ -1,5 +1,5 @@
 from WebApp import app
-from flask import render_template, url_for, redirect, request
+from flask import render_template, url_for, redirect, request, jsonify
 from flask.logging import default_handler
 import pickle
 import numpy as np
@@ -21,6 +21,17 @@ def default():
 @app.route('/home')
 def home():
     return render_template('home.html', prediction_text = prediction_text)
+
+@app.route('/predict_api', methods=['POST'])
+def predict_api():
+    data = request.json['data']
+    variables = np.array(list(data.values())).reshape(1, -1)
+    prediction = model.predict(variables)
+    if prediction == 0:
+        output = 'Poisonous'
+    else:
+        output = 'Edible'
+    return jsonify(output)
 
 @app.route('/predict', methods=['POST'])
 def predict():
