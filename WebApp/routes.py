@@ -6,7 +6,7 @@ import numpy as np
 import logging
 
 prediction_text = ''
-model = pickle.load(open('/Users/notaryanramani/Documents/VSCodePython/Mushroom Classification/mushroom-classification/mushroom_classifier.pkl', 'rb'))
+model = pickle.load(open('mushroom_classifier.pkl', 'rb'))
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -32,6 +32,7 @@ def predict_api():
     else:
         output = 'Edible'
     return jsonify(output)
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
