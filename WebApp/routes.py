@@ -6,7 +6,7 @@ import numpy as np
 import logging
 
 prediction_text = ''
-model = pickle.load(open('mushroom_classifier.pkl', 'rb'))
+model = pickle.load(open('WebApp/mushroom_classifier.pkl', 'rb'))
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -16,7 +16,11 @@ logger.removeHandler(default_handler)
 
 @app.route('/')
 def default():
-    return redirect(url_for('home'))
+    return redirect(url_for('welcome'))
+
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html')
 
 @app.route('/home')
 def home():

@@ -22,10 +22,27 @@ h2 {
     padding: 20px;
 }
 
+a {
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    letter-spacing: 2px;
+    padding: 20px;
+    color: lightpink;
+    text-decoration: none;
+}
+
 .form{
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: 200px;
 }
 
 .element {
